@@ -4,23 +4,29 @@
 <meta name="description" content="Heather Cox's personal hub — Microsoft SLED Copilot tools. Microsoft sign-in required for tools.">
 <meta name="robots" content="noindex, nofollow">
 <style>
-:root{--bg:#0d161b;--sage:#A8C9B0;--teal:#6FA8A3;--powder:#A9CBE3;--dusty:#6E9DBB;--butter:#F4DEA0;--coral:#E8A09A;--t1:#f3f6f7;--t2:rgba(243,246,247,.74);--card:rgba(169,203,227,.07);--border:rgba(169,203,227,.18)}
+:root{--sage:#A8C9B0;--teal:#6FA8A3;--powder:#A9CBE3;--dusty:#6E9DBB;--butter:#F4DEA0;--coral:#E8A09A;
+--bg:#0d161b;--glow1:rgba(110,157,187,.28);--glow2:rgba(111,168,163,.22);--t1:#f3f6f7;--t2:rgba(243,246,247,.74);--card:rgba(169,203,227,.07);--cardh:rgba(169,203,227,.11);--border:rgba(169,203,227,.18);--title1:#A8C9B0;--title2:#A9CBE3;--h2:#F4DEA0;--h3:#A9CBE3;--tag:#A8C9B0;--tagb:rgba(168,201,176,.45);--btnface:rgba(255,255,255,.06);--btnhover:#A9CBE3;--note:#F4DEA0;--btnfg:#0d161b}
+[data-theme="light"]{--bg:#f4f8f7;--glow1:rgba(169,203,227,.55);--glow2:rgba(168,201,176,.45);--t1:#1c2a30;--t2:rgba(28,42,48,.76);--card:rgba(255,255,255,.85);--cardh:#fff;--border:rgba(110,157,187,.35);--title1:#4f8a67;--title2:#4a7fa3;--h2:#8a6a14;--h3:#3f6f8f;--tag:#3d6f5c;--tagb:rgba(79,138,103,.5);--btnface:rgba(255,255,255,.9);--btnhover:#6E9DBB;--note:#8a6a14;--btnfg:#0d161b}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(1200px 600px at 15% -10%,rgba(110,157,187,.28) 0,transparent 60%),radial-gradient(900px 500px at 100% 0,rgba(111,168,163,.22) 0,transparent 55%),var(--bg);color:var(--t1);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;font-size:16px}
-main{max-width:960px;margin:0 auto;padding:64px 24px}
-h1{font-size:40px;font-weight:700;background:linear-gradient(90deg,var(--sage),var(--powder));-webkit-background-clip:text;background-clip:text;color:transparent}
+body{background:radial-gradient(1200px 600px at 15% -10%,var(--glow1) 0,transparent 60%),radial-gradient(900px 500px at 100% 0,var(--glow2) 0,transparent 55%),var(--bg);color:var(--t1);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;font-size:16px;transition:background .2s,color .2s}
+main{max-width:960px;margin:0 auto;padding:64px 24px;position:relative}
+.theme{position:absolute;top:24px;right:24px;cursor:pointer;font:inherit;font-size:14px;color:var(--t1);background:var(--btnface);border:1px solid var(--border);border-radius:999px;padding:7px 14px}
+.theme:hover{border-color:var(--btnhover)}
+h1{font-size:40px;font-weight:700;background:linear-gradient(90deg,var(--title1),var(--title2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--t2);margin:8px 0 40px;font-size:18px}
-h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--butter);margin-bottom:16px}
+h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--h2);margin-bottom:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
 .card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--border);border-top:3px solid var(--teal);border-radius:16px;padding:22px;transition:.2s}
-.card:hover{border-color:var(--sage);transform:translateY(-3px);background:rgba(169,203,227,.11)}
-.card h3{font-size:20px;margin-bottom:8px;color:var(--powder)}
+.card:hover{border-color:var(--sage);transform:translateY(-3px);background:var(--cardh)}
+.card h3{font-size:20px;margin-bottom:8px;color:var(--h3)}
 .card p{color:var(--t2);line-height:1.5;font-size:15px}
-.tag{display:inline-block;margin-top:14px;font-size:14px;color:var(--sage);border:1px solid rgba(168,201,176,.45);border-radius:999px;padding:3px 12px}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.btn{display:inline-block;text-decoration:none;color:var(--t1);border:1px solid var(--border);border-radius:10px;padding:9px 16px;font-size:15px;background:rgba(255,255,255,.06)}.btn:hover{border-color:var(--powder)}.btn.primary{background:linear-gradient(90deg,var(--sage),var(--teal));color:#0d161b;font-weight:600;border-color:transparent}.btn.primary:hover{filter:brightness(1.08)}.note{margin-top:14px;font-size:14px;color:var(--t2);border-left:3px solid var(--coral);padding-left:10px}.note b:first-child{color:var(--butter)}
+.tag{display:inline-block;margin-top:14px;font-size:14px;color:var(--tag);border:1px solid var(--tagb);border-radius:999px;padding:3px 12px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.btn{display:inline-block;text-decoration:none;color:var(--t1);border:1px solid var(--border);border-radius:10px;padding:9px 16px;font-size:15px;background:var(--btnface)}.btn:hover{border-color:var(--btnhover)}.btn.primary{background:linear-gradient(90deg,var(--sage),var(--teal));color:var(--btnfg);font-weight:600;border-color:transparent}.btn.primary:hover{filter:brightness(1.08)}.note{margin-top:14px;font-size:14px;color:var(--t2);border-left:3px solid var(--coral);padding-left:10px}.note b:first-child{color:var(--note)}
 footer{margin-top:56px;color:var(--t2);font-size:14px}
-</style></head>
+</style>
+<script>(function(){var s=null;try{s=localStorage.getItem("hub-theme")}catch(e){}var m=s||(window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",m)})()</script></head>
 <body><main>
+<button class="theme" id="themeBtn" type="button" aria-label="Toggle light or dark mode"></button>
 <h1>Heather Cox</h1>
 <p class="sub">Microsoft SLED Copilot · tools and resources I share with colleagues</p>
 <h2>Tools</h2>
@@ -33,4 +39,6 @@ footer{margin-top:56px;color:var(--t2);font-size:14px}
 <p class="note"><b>Note:</b> Export to Excel / CSV / JSON only works from the downloaded copy. Click <b>Download to use</b>, then open the saved .html file in your browser. The OneDrive view blocks file saves. The download is always the latest version.</p></div>
 </div>
 <footer>Tools open from OneDrive and are shared with People in Microsoft only. You will be asked to sign in with your @microsoft.com account. Microsoft Internal — decision support only.</footer>
-</main></body></html>
+</main>
+<script>(function(){var b=document.getElementById("themeBtn"),r=document.documentElement;function l(){b.textContent=r.getAttribute("data-theme")==="light"?"\u263E Dark":"\u2600 Light"}b.addEventListener("click",function(){var n=r.getAttribute("data-theme")==="light"?"dark":"light";r.setAttribute("data-theme",n);try{localStorage.setItem("hub-theme",n)}catch(e){}l()});l()})()</script>
+</body></html>
